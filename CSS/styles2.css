@@ -12,15 +12,12 @@ body {
   }
   
   .login-container {
-    width: 340px;
-    height: 500px;
-    color: white;
-    top: 50%;
-    left: 50%;
-    position: relative;
-    transform: translate(-50%, -50%);
-    padding: 70px 30px;
-    background: #dfe4ea;
+   width: 450px;
+      /*height: 500px;*/
+      color: white;
+      margin: 50px auto;
+      padding: 70px 30px;
+      background: #dfe4ea;
     
   }
   
