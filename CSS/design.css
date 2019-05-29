@@ -1,10 +1,23 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto|Share+Tech+Mono&display=swap');
 
 * {
-	font-family: 'Share Tech Mono', monospace;
+	font-family: 'Roboto', sans-serif;
 }
 
-.navbar-brand {
+.header {
+	background-color: #dee2e6;
+}
+.fa-digital-ocean {
+	color: #007bff;
+	font-size: 32px; 
+	margin: 5px;
+}
+.navbar-light .navbar-brand  {
 	font-family: 'Share Tech Mono', monospace;
+	color: #007BFF;
+	margin: 0 10px 0 10px;
 }
 
+.navbar-light .navbar-nav .nav-link {
+	color: #007BFF;
+}

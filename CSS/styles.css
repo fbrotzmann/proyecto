@@ -1,3 +1,4 @@
+@import "design.css";
 * {
     box-sizing: border-box;
   }
@@ -14,11 +15,11 @@
     .register-container {
       width: 450px;
       /*height: 500px;*/
-      color: white;
+      color: #747d8c;
       margin: 50px auto;
       padding: 70px 30px;
       background: #dfe4ea;
-      
+      font-weight: bold;
     }
     
     .register-container h1 {
@@ -43,6 +44,7 @@
     .register-container button {
       width: 100%;
       margin-bottom: 20px;
+
     }
     
     .register-container input[type="text"], .register-container input[type="password"], .register-container input[type="email"] {
@@ -59,10 +61,11 @@
       border: none;
       outline: none;
       height: 40px;
-      background: #747d8c;
+      background: #007bff;
       color: #fff;
       font-size: 18px;
       border-radius: 20px;
+
     }
     
     .register-container button[type="submit"]:hover {
