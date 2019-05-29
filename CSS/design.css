@@ -31,15 +31,23 @@ h2.text-left {
 }
 
 
+/*---------------- Estilos de las faqs!! ----------------------------*/
+#accordionExample{
+	color: rgb(0, 0, 0);
+	margin-top: 95px;
+	margin-bottom: 40px;
+}
+
 .card{
 background-color: #e0e5eb;
 text-align: center;
 margin-top: 2.5px;
-margin-left: 60px;
-margin-right: 60px;
+margin-left: 100px;
+margin-right: 100px;
 margin-bottom: 2.5px;
 }
+/*---------------- Fin estilos de las faqs!! ---------------------------*/
 
 .nav {
-	font-size: 20px; 
+	font-size: 20px;
 }
