@@ -21,3 +21,11 @@
 .navbar-light .navbar-nav .nav-link {
 	color: #007BFF;
 }
+
+.container {
+	margin: 15px 0;
+}
+
+h2.text-left {
+	padding: 15px;
+}
