@@ -83,6 +83,7 @@ margin-bottom: 2.5px;
   border-radius: 5px;
 }
 
+<<<<<<< HEAD
 .product-device-2 {
   top: -25%;
   right: auto;
@@ -102,3 +103,8 @@ margin-bottom: 2.5px;
 }
 
 .overflow-hidden { overflow: hidden; }
+=======
+.nav {
+	font-size: 20px; 
+}
+>>>>>>> d0cfadab2d4178fb164f4fa91b2b86a8cb01b2c2
