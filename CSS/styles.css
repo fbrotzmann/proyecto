@@ -1,4 +1,5 @@
 @import "design.css";
+
 * {
     box-sizing: border-box;
   }
@@ -75,7 +76,7 @@
     
     .register-container button[type="submit"]:hover {
       cursor: pointer;
-      background: #2f3542;
+      background: #747d8c;
     }
     
     .register-container a {
