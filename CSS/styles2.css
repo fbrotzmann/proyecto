@@ -12,14 +12,18 @@ body {
   }
   
   .login-container {
-   width: 450px;
-      /*height: 500px;*/
-      color: white;
-      margin: 50px auto;
-      padding: 70px 30px;
-      background: #dfe4ea;
-      font-weight: bold;
-    
+    width: 450px;
+    color: white;
+    margin: 50px auto;
+    padding: 70px 30px;
+    background: #dfe4ea;
+    font-weight: bold;
+  }
+
+  @media (max-width: 400px) {
+    .login-container {
+      width: 90%;
+    }
   }
   
   .login-container .logo {
