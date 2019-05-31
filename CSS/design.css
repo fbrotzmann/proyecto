@@ -7,6 +7,7 @@
 .header {
 	background-color: #dee2e6;
 }
+
 .fa-digital-ocean {
 	color: #007bff;
 	font-size: 32px;
@@ -97,22 +98,12 @@ margin-bottom: 2.5px;
   }
 =======
 /*---------------- Estilos de products!! ---------------------*/
- .ul.productList.h1{
-	font-family: monospace;
-	font-size: 10px;
-}
 
 .productList{
 	margin-top: 40px;
-	margin-right: 120px;
-	margin-left: 120px;
+	margin-right: 160px;
+	margin-left: 160px;
 	margin-bottom: 40px;
 }
 
- .mr-3{
-	width: 90px;
-	height: 90px;
-} 
-
 /*---------------- Fin estilos de products!! ------------------*/
->>>>>>> df6a18046bf10dfadad10a485ab963e9d3f64c5b
