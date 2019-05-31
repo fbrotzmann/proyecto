@@ -57,12 +57,13 @@ margin-left: 100px;
 margin-right: 100px;
 margin-bottom: 2.5px;
 }
-/*---------------- Fin estilos de las faqs!! ---------------------------*/
+/*---------------- Fin estilos de las faqs!! -------------------*/
 
 .nav {
 	font-size: 20px;
 }
 
+<<<<<<< HEAD
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 
@@ -94,3 +95,24 @@ margin-bottom: 2.5px;
     font-size: 1.25rem;
     line-height: 1.4;
   }
+=======
+/*---------------- Estilos de products!! ---------------------*/
+.ul.productList.h1{
+	font-family: monospace;
+	font-size: 10px;
+}
+
+.productList{
+	margin-top: 100px;
+	margin-right: 120px;
+	margin-left: 120px;
+	margin-bottom: 40px;
+}
+
+.mr-3{
+	width: 90px;
+	height: 90px;
+}
+
+/*---------------- Fin estilos de products!! ------------------*/
+>>>>>>> df6a18046bf10dfadad10a485ab963e9d3f64c5b
