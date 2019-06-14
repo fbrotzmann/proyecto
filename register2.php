@@ -1,3 +1,74 @@
+<?php
+
+  //CARGO ERRORES VACIOS PARA MOSTRAR LA PRIMERA VEZ EN PANTALLA
+  $errorUsername = "";
+  
+  $errorPassword = "";
+
+  $errorEmail = "";
+  
+  $errores = 0;
+
+  //SI RECIBO ALGO POR POST
+  if($_POST){
+
+    //TOMO LO RECIBIDO POR EL FOMRULARIO Y LO GUARDO SIN ESPACIOS
+    $username = trim($_POST["username"]);
+    
+    $password = trim($_POST["password"]);
+
+    $email = trim($_POST["email"]);
+    
+    $confirmPass = trim($_POST["confirmPass"]);
+    
+    
+    //VALIDACION DE CADA DATO
+    if ($username == "") {
+      $errorUsername = "Completa el nombre";
+      $errores++;
+    }
+    
+    if ($password ==""){
+    $errorPassword = "Completa la contraseña";
+    $errores++;
+    }
+    else if (strlen($password)<4)
+    {
+      $errorPassword = "La contraseña debe tener al menos 4 caracteres";
+      $errores++;
+    }else if($password != $confirmPass){
+      $errorPassword = "Las contraseñas no coinciden";
+      $errores++;
+    } 
+
+    if(!$hayErrores){
+      //ARMO UN ARRAY ASOCIATIVO DEL USUARIO CON SUS DATOS YA VALIDADOS
+      $user = [
+      "username"=> $username,
+      "password" => password_hash($password, PASSWORD_DEFAULT),
+      "email"=> $email
+      ];
+
+      $users = file_get_contents('users.json');
+      $users = json_decode($users,true);
+      
+      $users[]=$user;
+      
+      $usersJson = json_encode($users, JSON_PRETTY_PRINT);
+
+      file_put_contents('users.json',$usersJson);
+
+      echo "<h2>Gracias por su registro!</h2><br>
+      <a href='register2.php'>de vuelta</a><br>";
+
+      var_dump($usersJson);
+      exit;
+    }
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,19 +78,14 @@
   <!-- FONT AWESOME -->
 
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-
-   <!-- bootstrap -->
+   <!-- conecto a bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-  <title>DH Electronics - Perfil</title>
-
-  <link rel="stylesheet" href="CSS/design.css">
+  <title>DH Electronics - Registro</title>
+  <link rel="stylesheet" href="CSS/styles.css">
 </head>
-
-
 <body>
-<div id="container">
+
   <!--   -------------------HEADER  ------------------ -->
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -98,74 +164,50 @@
   </div>
 </nav>
 
-		<!--   ------------------BODY ------------------ -->
+        <div class="register-container">
+            <p style="text-align: center;">
+            <i class="fab fa-digital-ocean"></i>
+          </p>
+            <h1>Completá tus datos</h1>
+            <form class="" action="" method="POST">
 
-<div class="container">
-	<div class="row">
-		<div class="col-md-4 my-2">
-		<p class="h2 text-center text-md-left">Nombre de usuario</p>
-			<ul class="nav flex-column text-center text-md-left">
-			  	<li class="nav-item">
-			    	<a class="nav-link" href="#">Compras</a>
-			  	</li>
-				<li class="nav-item">
-				    <a class="nav-link" href="#">Productos guardados</a>
-				</li>
-				<li class="nav-item">
-				    <a class="nav-link" href="#">Datos de usuario</a>
-				</li>
+                    <!-- USERNAME -->
+                <label for="username">Nombre de usuario</label>
+                <input id="username" type="text" name="username" placeholder="Cree un usuario" value="<?= $user ?>" required>
+                <?= $errorUser ?>
 
-			</ul>
-		</div>
+                    <!-- PASSWORD -->
+                <label for="password">Contraseña</label>
+                <input id="password" type="password" name="password" placeholder="Cree una contraseña" required> <?= $errorPassword ?>
 
+                    <!-- ConfirmPass -->
+                <label for="ConfirmPass">Confirmar contraseña</label>
+                <input type="password" name="confirmPass" value=""> <?= $errorPassword ?> 
 
+                    <!-- EMAIL -->
+                <label for="email">Correo electrónico</label>
+                <input id="email" type="email" name="email" placeholder="user@email.com" value="<?= $email ?>" required> <?= $errorEmail ?>
 
-		<div class="col my-2">
-			<p class="h2 text-center"> Resumen de cuenta </p>
-				<ul class="list-group">
-				  <li class="list-group-item d-flex justify-content-between align-items-center">
-				   <a href="">Compras</a>
-				    <span class="badge badge-primary badge-pill">14</span>
-				  </li>
-				  <li class="list-group-item d-flex justify-content-between align-items-center">
-				    <a href="">Productos guardados</a>
-				    <span class="badge badge-primary badge-pill">2</span>
-				  </li>
-				  <li class="list-group-item d-flex justify-content-between align-items-center">
-				    <a href="">Productos vistos</a>
-				    <span class="badge badge-primary badge-pill">1</span>
-				  </li>
-				</ul>
-		</div>
+                <button type="submit" name="button">Crear cuenta</button>
 
+            </form>
 
+        </div>
 
-	</div>
-</div>
+        <!-- Pongo div de footer -->
+        <footer>
+          <div class="card-footer text-muted">
+          <a href="index.html"><i class="fab fa-digital-ocean"></i></a>
+          <a href="https://www.facebook.com"><i class="fab fa-facebook-square"></i></a>
+          <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+          <br>
+          <p>2019 Powered by Maca, Pato, Fede & Anthony </p>
+        </footer>
 
-
-	<!--   -------------------FOOTER  ------------------ -->
-
-  <footer>
-    <div class="card-footer text-muted">
-    <a href="index.html"><i class="fab fa-digital-ocean"></i></a>
-    <a href="https://www.facebook.com"><i class="fab fa-facebook-square"></i></a>
-    <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
-    <br>
-    <p>2019 Powered by Maca, Pato, Fede & Anthony </p>
-  </footer>
-</div>
-<!-- JQuery -->
-	<script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
-
-<!-- Popper.js -->
+ <!-- JAVA de bootstrap  -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-
-  <!-- Js -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
 
-</body>
 </html>
