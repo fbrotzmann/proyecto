@@ -2,11 +2,11 @@
 
   //CARGO ERRORES VACIOS PARA MOSTRAR LA PRIMERA VEZ EN PANTALLA
   $errorUsername = "";
-  
+
   $errorPassword = "";
 
   $errorEmail = "";
-  
+
   $errores = 0;
 
   //SI RECIBO ALGO POR POST
@@ -14,20 +14,20 @@
 
     //TOMO LO RECIBIDO POR EL FOMRULARIO Y LO GUARDO SIN ESPACIOS
     $username = trim($_POST["username"]);
-    
+
     $password = trim($_POST["password"]);
 
     $email = trim($_POST["email"]);
-    
+
     $confirmPass = trim($_POST["confirmPass"]);
-    
-    
+
+
     //VALIDACION DE CADA DATO
     if ($username == "") {
       $errorUsername = "Completa el nombre";
       $errores++;
     }
-    
+
     if ($password ==""){
     $errorPassword = "Completa la contraseña";
     $errores++;
@@ -39,7 +39,7 @@
     }else if($password != $confirmPass){
       $errorPassword = "Las contraseñas no coinciden";
       $errores++;
-    } 
+    }
 
     if(!$hayErrores){
       //ARMO UN ARRAY ASOCIATIVO DEL USUARIO CON SUS DATOS YA VALIDADOS
@@ -51,9 +51,9 @@
 
       $users = file_get_contents('users.json');
       $users = json_decode($users,true);
-      
+
       $users[]=$user;
-      
+
       $usersJson = json_encode($users, JSON_PRETTY_PRINT);
 
       file_put_contents('users.json',$usersJson);
@@ -182,7 +182,7 @@
 
                     <!-- ConfirmPass -->
                 <label for="ConfirmPass">Confirmar contraseña</label>
-                <input type="password" name="confirmPass" value=""> <?= $errorPassword ?> 
+                <input type="password" name="confirmPass" value=""> <?= $errorPassword ?>
 
                     <!-- EMAIL -->
                 <label for="email">Correo electrónico</label>
@@ -193,21 +193,28 @@
             </form>
 
         </div>
-
+</body>
         <!-- Pongo div de footer -->
+
         <footer>
-          <div class="card-footer text-muted">
-          <a href="index.html"><i class="fab fa-digital-ocean"></i></a>
-          <a href="https://www.facebook.com"><i class="fab fa-facebook-square"></i></a>
-          <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
-          <br>
-          <p>2019 Powered by Maca, Pato, Fede & Anthony </p>
+          <div class="card-footer text-muted ">
+            <div class="row">
+              <div class="col">
+                <a href="index.html"><i class="fab fa-digital-ocean"></i></a>
+                <a class="textDH " href="index.html"> DH Electronics </a>
+                <a class="logo" href="https://www.facebook.com"><i class="fab fa-facebook-square "></i></a>
+                <a class= "logo" href="https://www.instagram.com"><i class="fab fa-instagram "></i></a>
+              </div>
+            <div class="columna text-small">
+              <p>2019 Powered by Maca, Pato, Fede & Anthony </p>
+            </div>
+          </div>
         </footer>
 
  <!-- JAVA de bootstrap  -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    </body>
+
 
 </html>
